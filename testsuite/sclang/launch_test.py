@@ -21,9 +21,9 @@ def sc_output_print(output):
 	sys.stdout.write("\t|  " + output) 
 
 def sc_input(proc, input):
-	print "\t|" + ("_" * 60)
-	print "-> " + input
-	print "\t_" + ("_" * 60)
+	print("\t|" + ("_" * 60))
+	print("-> " + input)
+	print("\t_" + ("_" * 60))
 	proc.stdin.write(input + (" %s" % chr(0x1b)))
 
 timeout = 30
@@ -52,7 +52,7 @@ while not(launched_string in output):
 	output = non_block_read(proc.stdout)
 	error = non_block_read(proc.stderr)
 	if error:
-		print "ERROR:\n" + error
+		print("ERROR:\n" + error)
 		sys.exit(error)
 	elif output:
 		sc_output_print(output)
@@ -74,7 +74,7 @@ while proc.poll() and time.time() < (start_time + timeout):
 
 	if error: 
 		# read the rest of the error
-		print "ERROR:\n" + error
+		print("ERROR:\n" + error)
 		sys.exit(error)
 	elif output:
 		sc_output_print(output) 

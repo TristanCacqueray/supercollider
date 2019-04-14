@@ -34,7 +34,7 @@ def load():
         filename = locate()
         f = open(filename, "r")
     except:
-        print "Could not open configuration file: " + str(filename)
+        print("Could not open configuration file: " + str(filename))
         f = None
 
     data = {}
@@ -42,7 +42,7 @@ def load():
         try:
             data = simplejson.load(f)
         except:
-            print "Configuration file not a valid JSON script!"
+            print("Configuration file not a valid JSON script!")
         f.close()
 
     sets.sc_dir = data.get("supercollider-dir")
@@ -51,7 +51,7 @@ def load():
     sets.sclang_cmd = lang_data.get("command")
     sets.sclang_work_dir = lang_data.get("runtime-dir")
 
-    print "Sced settings loaded."
+    print("Sced settings loaded.")
 
     return sets
 
@@ -67,7 +67,7 @@ class Settings(object):
         try:
             path.remove(self.__filename)
         except:
-            print "existing"
+            print("existing")
 
         f = open(locate(), "w")
 
@@ -84,5 +84,5 @@ class Settings(object):
 
         f.close()
 
-        print "Sced settings saved."
+        print("Sced settings saved.")
 
